@@ -9,6 +9,8 @@ if(isset($_GET['iddelcom']))
         $reqq=$connexion->prepare("DELETE FROM panier where commande=?");
         $reqq->execute(array($id));
         $_SESSION['notif']="suppression  reussie";
+        $_SESSION['color']='success';
+        $_SESSION['icon']="trash3-fill";
         header("location:../../views/sortie.php");
     }
 }
@@ -19,6 +21,8 @@ if(isset($_GET['iddelpanier']))
     $req=$connexion->prepare("DELETE FROM panier where id=?");
     $req->execute(array($id));
     $_SESSION['notif']="suppression  reussie";
+    $_SESSION['color']='success';
+    $_SESSION['icon']="trash3-fill";
     header("location:../../views/sortie.php?com=$com");
     
 }
@@ -33,6 +37,8 @@ if(isset($_GET['cancel']))
     {
         $reqq=$connexion->prepare("DELETE FROM panier where commande=?");
         $reqq->execute(array($id));
+        $_SESSION['color']='success';
+        $_SESSION['icon']="trash3-fill";
         $_SESSION['notif']="une commande a ete annuler";
         header("location:../../views/sortie.php");
 

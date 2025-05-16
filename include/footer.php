@@ -1,11 +1,11 @@
 
 
-<div class="container ">
+<div class="container no-print">
       <div class="copyright">
-        &copy; Copyright <strong><span>MUYISA ÉNERGIE</span></strong>
+        &copy; Copyright <?php echo date("Y")?> <strong><span>MUYISA ÉNERGIE</span></strong>
       </div>
       <div class="credits">
        
-        Designed by <a href="">Albert</a>
+        Designed by <a href="https://wa.me/+243977139499">Albert</a> -  <a href="">Glad</a>
       </div>
 </div>

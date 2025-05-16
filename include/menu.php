@@ -2,10 +2,10 @@
 include_once('../connexion/connexion.php');
 if(!isset($_SESSION['fonction']) || empty($_SESSION['fonction'] ))
 {
-  header('location:../index.php');
+  header('location:../index.html');
 }
 ?>
-<header id="header" class="bg-success">
+<header id="header" class="bg-success no-print">
     <div class="d-flex flex-column " >
 
       <div class="profile">
@@ -41,12 +41,13 @@ if(!isset($_SESSION['fonction']) || empty($_SESSION['fonction'] ))
                
           <?php } else if($_SESSION['fonction']=="caissiere"){?>
                  <li ><a href="../views/client.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>Client</span></strong></a></li>
-                 <li ><a href="../views/sortie.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-arrow-left-circle-fill text-white"></i><strong> <span>sortie</span></strong></a></li>
+                 <li ><a href="../views/sortie.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-arrow-left-circle-fill text-white"></i><strong> <span>facturation</span></strong></a></li>
                   
          <?php } else if($_SESSION['fonction']=="comptable"){?>
                  <li ><a href="../views/stock.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-box-seam text-white"></i><strong> <span>Verifier stock</span></strong></a></li>
                  <li ><a href="../views/situation_client.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-bar-chart-fill text-white"></i><strong> <span>situation client</span></strong></a></li>
                  <li ><a href="../views/paiement_dette.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-calculator-fill text-white"></i><strong> <span>Paiement dette </span></strong></a></li>
+                 <li ><a href="../views/non_livrer.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-cart-dash-fill text-white"></i><strong> <span>non livrer</span></strong></a></li>
           <?php } else { ?>
                  <li ><a href="../views/utilisateur.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>users</span></strong></a></li>
           <?php } ?>

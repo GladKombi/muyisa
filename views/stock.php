@@ -40,12 +40,19 @@ include_once('../include/menu.php');
        
         
           <section class="section ">
-              <div class="shadow p-3 m-3">
+              <div class=" m-3">
              <center> <div class="mt-3">
-                
+                <div class="row">
+                  <div class="col-6 shadow p-3">
+                       <h1 class="text-success">Stock essence : <?=$_SESSION['stock_essence']?>  Litres</h1>
+                  </div>
+                  <div class="col-6 shadow p-3">
+                        <h1 class="text-success">Stock mazout : <?=$_SESSION['stock_mazout']?>  Litres</h1>
+                  </div>
+                </div>
                   
-                  <h1 class="text-success">Stock essence : <?=$_SESSION['stock_essence']?>  Litres</h1>
-                  <h1 class="text-success">Stock mazout : <?=$_SESSION['stock_mazout']?>  Litres</h1>
+                  
+                
               </div>
             </center>
               </div>

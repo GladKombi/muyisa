@@ -274,7 +274,7 @@ include_once('../include/menu.php');
             
                                         <div  <?php if($totalo==0){ ?> Hidden <?php } ?> class="col-8"><a href="facture.php?com=<?=$_GET['com'];?>"  class="col-12 btn btn-dark ">Valider et imprimer</a> </div>
 
-                                        <div class="col-12 p-3"><a  href="vendre.php?new" class="col-12 btn btn-outline-dark bi bi-plus">Nouvelle commande</a> </div>
+                                        <div class="col-12 p-3"><a  href="sortie.php?new" class="col-12 btn btn-outline-dark bi bi-plus">Nouvelle commande</a> </div>
 
                                     
                             </div>

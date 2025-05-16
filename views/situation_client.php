@@ -17,9 +17,25 @@ if(isset($_GET['idclient']))
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>situation client</title>
+  <title class="no-print">situation client</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
+  <style>
+
+@media print {
+    .no-print {
+        display: none;
+    }
+}
+
+ @media print {
+            .no-print {
+                display: none;
+            }
+        }
+
+
+</style>
 
   <!-- link -->
     <?php 
@@ -38,14 +54,14 @@ include_once('../include/menu.php');
 <body>
 
   <!-- ======= Mobile nav toggle button ======= -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none  no-print"></i>
 
   <main id="main" class="main">
         <div class="row " >
     
-            <div class="col-120 bg-black position-fixed m-auto p-3">
+            <div class="col-120 bg-black position-fixed m-auto p-3 no-print"  >
             
-                <h2 class=" text-white">situation_client</h2>
+                <h2 class=" text-white ">situation_client</h2>
               
             </div><!-- End Page Title -->
        
@@ -145,15 +161,15 @@ include_once('../include/menu.php');
                             
                                 <div class="row">
                                     <div class="col-xl-12 col-lg-12 col-md-12 shadow p-3 m-3">
-                                        <strong>CLIENT : <?=$detail['nom']." ".$detail['postnom']." ".$detail['prenom']?></strong>
+                                        <strong><h1>CLIENT : <?=$detail['nom']." ".$detail['postnom']." ".$detail['prenom']?></h1></strong>
                                         
 
                                     </div>
                                     <div class="col-xl-12 col-lg-12 col-md-12  col-sm-12 row">
-                                        <div class="col-6 shadow p-3 m-3">
+                                        <div class="col-4 shadow p-3 m-3">
                                             TOTAL DETTE : <?=$total_dette_gen?> $
                                         </div>
-                                        <div class="col-4 shadow p-3 m-3">
+                                        <div class="col-6 shadow p-3 m-3">
                                             <div class="row">
                                                 <div class="col-12">
                                                      ESSENCE NON LIVRER :
@@ -177,7 +193,7 @@ include_once('../include/menu.php');
                                             <th scope="col">facture N°</th>
                                             <th scope="col">type achat</th>
                                             <th scope="col">montant</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col" class="no-print">Action</th>
 
                                         </tr>
                                     </thead>
@@ -213,7 +229,7 @@ include_once('../include/menu.php');
                                             <td> <?php if($data['type']==1){ echo "cash";}else { echo "credit";}?></td>
                                             
                                             <td><?=$total?>$</td>
-                                            <td>
+                                            <td class="no-print">
                                             <a href="facture.php?com=<?=$data['id']?>" class="btn btn-success btn-sm "><i
                                              class="bi bi-eye-fill"></i></a>
 
@@ -233,6 +249,9 @@ include_once('../include/menu.php');
                                 </table>
                                 
                               </div>
+                              <div class="col-12  no-print mb-3">
+                                    <button onclick="window.print()" class="btn btn-success col-12 me-2">Imprimer</button>
+                                </div>
                               <!-- End Table with stripped rows -->
 
                              </div>
@@ -265,7 +284,7 @@ include_once('../include/menu.php');
 
      
 
-        <footer id="footer">
+        <footer id="footer" class="no-print">
         <?php 
           include_once('../include/footer.php');
           
@@ -286,7 +305,18 @@ include_once('../include/menu.php');
     
     ?>
 
- 
+<script>
+function saveAsImage() {
+    const invoiceElement = document.getElementById('invoice');
+    html2canvas(invoiceElement).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'facture.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        
+    });
+}
+</script>
 
 
 </body>
