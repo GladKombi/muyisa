@@ -61,7 +61,7 @@ include_once('../include/menu.php');
 
      
 
-        <footer id="footer">
+        <footer id="footer" class="bg-success">
         <?php 
           include_once('../include/footer.php');
           

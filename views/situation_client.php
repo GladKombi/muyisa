@@ -172,10 +172,10 @@ include_once('../include/menu.php');
                                         <div class="col-6 shadow p-3 m-3">
                                             <div class="row">
                                                 <div class="col-12">
-                                                     ESSENCE NON LIVRER :
+                                                     ESSENCE NON LIVRER : <?=$quantite_essenceNL?> L
                                                 </div>
                                                 <div class="col-12">
-                                                     MAZOUT NON LIVRER :
+                                                     MAZOUT NON LIVRER :  <?=$quantite_mazoutNL?> L
                                                 </div>
                                             </div>
                                            

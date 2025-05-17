@@ -53,6 +53,27 @@ if(isset($_GET['idclient']))
     $SelDetail=$connexion->prepare("SELECT * from client where numero=?");
     $SelDetail->execute(array($client));
     $detail=$SelDetail->fetch();
+
+
+    $sel_non_liver=$connexion->prepare("SELECT sum(nonlivrer.quantite_essence) as quantite_essence,sum(nonlivrer.quantite_mazout) as quantite_mazout from nonlivrer,commande where commande.id=nonlivrer.commande and commande.client=? and nonlivrer.statut=0 and nonlivrer.supprimer=0");
+    $sel_non_liver->execute(array($client));
+    $non_liver=$sel_non_liver->fetch();
+    if($non_liver['quantite_essence']!="")
+    {
+        $quantite_essenceNL=$non_liver['quantite_essence'];
+    }
+    else
+    {
+        $quantite_essenceNL=0;
+    }
+    if($non_liver['quantite_mazout']!="")
+    {
+        $quantite_mazoutNL=$non_liver['quantite_mazout'];
+    }
+    else
+    {
+        $quantite_mazoutNL=0;
+    }
 }
 
 
