@@ -34,7 +34,7 @@ if (isset($_POST["valider"]))
                 $_SESSION['notif']="Un element vient d'etre ajouter dans le panier d'approvisionnement";
                 $_SESSION['color']='success';
                 $_SESSION['icon']="check-circle-fill";
-                header("location:../../views/commande_ap.php?com=$commande");
+                header("location:../../views/commande_ap.php?com=$commande&pfin");
             }
         }
  }

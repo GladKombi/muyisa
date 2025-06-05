@@ -1,6 +1,16 @@
 <?php 
 include('../connexion/connexion.php');
 include_once('../models/select/sel-commande_ap.php');
+
+if(isset($_GET['pfin']))
+{
+    $attribut="";
+}
+else
+{
+    $attribut="Disaabled";
+
+}
 if(isset($_GET['idFour']))
 {
 
@@ -40,7 +50,7 @@ if(isset($_GET['idFour']))
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>commande_ap </title>
+  <title>commande </title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -168,7 +178,7 @@ include_once('../include/menu.php');
                                 
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-6 col-md-6  col-sm-6">
-                                         <form  class="shadow  p-3 m-3" action="../models/add/add-commande_ap.php?com=<?=$_GET['com']?>" method="POST">
+                                         <form  class="shadow  p-3 m-3" action="../models/add/add-commande_ap.php?com=<?=$_GET['com']?>" method="POST"Hidden<?=$attribut?>>
                                             <h5 class="card-title text-center "></h5>
                                             <div class="row">
                                                 <div class="col-xl-12 col-lg-12 col-md-12  col-sm-12 p-3">
@@ -226,7 +236,7 @@ include_once('../include/menu.php');
                                         </form>
                                     </div>
                                    
-                                    <div class="shadow p-3 col-xl-6 col-lg-6 col-md-6  col-sm-6">
+                                    <div  <?php if(isset($_GET['pfin'])){?> class="shadow p-3 col-xl-12 col-lg-12 col-md-12  col-sm-12"<?php } else{ ?> class="shadow p-3 col-xl-6 col-lg-6 col-md-6  col-sm-6"<?php } ?>>
 
                                         <?php if(isset($_GET['com'])){?>
                                         <div>
@@ -261,6 +271,7 @@ include_once('../include/menu.php');
                                                     $PT=$data['prixunitaire']*$data['quantite'];
                                                     $total=$total+$PT;
                                                     $totalo=$total;
+
                                                 ?>
                                                 <tr>
                                                     <td><?=$numero?></td>
