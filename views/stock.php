@@ -43,10 +43,10 @@ include_once('../include/menu.php');
               <div class=" m-3">
              <center> <div class="mt-3">
                 <div class="row">
-                  <div class="col-6 shadow p-3">
+                  <div class="col-xl-6 col-lg-6 col-md-6  col-sm-6  shadow p-3 ">
                        <h1 class="text-success">Stock essence : <?=$_SESSION['stock_essence']?>  Litres</h1>
                   </div>
-                  <div class="col-6 shadow p-3">
+                  <div class="col-xl-6 col-lg-6 col-md-6  col-sm-6  shadow p-3">
                         <h1 class="text-success">Stock mazout : <?=$_SESSION['stock_mazout']?>  Litres</h1>
                   </div>
                 </div>

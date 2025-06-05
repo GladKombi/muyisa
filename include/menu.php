@@ -30,18 +30,19 @@ if(!isset($_SESSION['fonction']) || empty($_SESSION['fonction'] ))
           <?php if($_SESSION['fonction']=="gerant"){?>
                 <li ><a href="../views/taux.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-arrow-repeat text-white"></i><strong> <span>Taux d'echange</span></strong></a></li>
                 <li ><a href="../views/prix.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-bar-chart-fill text-white"></i><strong> <span>definir le prix</span></strong></a></li>
-                
+                <li ><a href="../views/camion.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-arrow-left-circle-fill text-white"></i><strong> <span>camion</span></strong></a></li>
                 <li ><a href="../views/fournisseur.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>fournisseur</span></strong></a></li>
                 <li ><a href="../views/commande_ap.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-arrow-down-circle-fill text-white"></i><strong> <span>commande carburant</span></strong></a></li>
                 <li ><a href="../views/approvisionnement.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-arrow-down-circle-fill text-white"></i><strong> <span>approvisionnement</span></strong></a></li>
                 <li ><a href="../views/personnel.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>personnel</span></strong></a></li>
+                <li ><a href="../views/client.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>Client</span></strong></a></li>
+                <li ><a href="../views/sortie.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-arrow-left-circle-fill text-white"></i><strong> <span>vente en credit</span></strong></a></li>
                 <li ><a href="../views/remuneration.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-calculator-fill text-white"></i><strong> <span>Remuneration</span></strong></a></li>
                 <li ><a href="../views/bondesortie.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-arrow-left-circle-fill text-white"></i><strong> <span>bon de sortie</span></strong></a></li>
                
                
           <?php } else if($_SESSION['fonction']=="caissiere"){?>
-                 <li ><a href="../views/client.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>Client</span></strong></a></li>
-                 <li ><a href="../views/sortie.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-arrow-left-circle-fill text-white"></i><strong> <span>facturation</span></strong></a></li>
+               
                   
          <?php } else if($_SESSION['fonction']=="comptable"){?>
                  <li ><a href="../views/stock.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-box-seam text-white"></i><strong> <span>Verifier stock</span></strong></a></li>

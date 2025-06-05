@@ -40,7 +40,7 @@ if($tot_paiement_dette['total']!=0)
 }
 else
 {
-	$total_sortie=0;
+	$total_paiement_dette=0;
 }
 
 
