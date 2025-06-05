@@ -30,9 +30,10 @@ if(!isset($_SESSION['fonction']) || empty($_SESSION['fonction'] ))
           <?php if($_SESSION['fonction']=="gerant"){?>
                 <li ><a href="../views/taux.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-arrow-repeat text-white"></i><strong> <span>Taux d'echange</span></strong></a></li>
                 <li ><a href="../views/prix.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-bar-chart-fill text-white"></i><strong> <span>definir le prix</span></strong></a></li>
-                <li ><a href="../views/camion.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-arrow-left-circle-fill text-white"></i><strong> <span>camion</span></strong></a></li>
+                <li ><a href="../views/camion.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-truck text-white"></i><strong> <span>camion</span></strong></a></li>
                 <li ><a href="../views/fournisseur.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>fournisseur</span></strong></a></li>
-                <li ><a href="../views/commande_ap.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-arrow-down-circle-fill text-white"></i><strong> <span>commande carburant</span></strong></a></li>
+                <li ><a href="../views/commande_ap.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-cart-plus-fill text-white"></i><strong> <span>commande carburant</span></strong></a></li>
+                <li ><a href="../views/chargement.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-arrow-up-circle-fill text-white"></i><strong> <span>chargement</span></strong></a></li>
                 <li ><a href="../views/approvisionnement.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-arrow-down-circle-fill text-white"></i><strong> <span>approvisionnement</span></strong></a></li>
                 <li ><a href="../views/personnel.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>personnel</span></strong></a></li>
                 <li ><a href="../views/client.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>Client</span></strong></a></li>
