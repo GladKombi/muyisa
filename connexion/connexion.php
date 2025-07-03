@@ -78,9 +78,12 @@ else
 	$total_bondesortie=0;
 }
 
-
-
-
+// $sel_reste->closeCursor();
+// $sel_tot_sortie->closeCursor();
+// $sel_tot_paiement_dette->closeCursor();
+// $sel_tot_appro->closeCursor();
+// $sel_tot_remuneration->closeCursor();
+// $sel_bondesortie->closeCursor();
 
 $_SESSION['caisse']=$total_reste+$total_sortie+$total_paiement_dette-$total_remuneration-$total_appro-$total_bondesortie;
 

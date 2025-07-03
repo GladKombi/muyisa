@@ -180,7 +180,8 @@ include_once('../include/menu.php');
                                             <td><?=$data['montant']?>$</td>
                                             <td>
                                           
-
+                                                <a href="payerdeclaration.php?iddecl=<?=$data['id']?>&retour=0" class="btn btn-success btn-sm "><i
+                                                                                            class="bi bi-eye-fill"></i></a>
                                               <a   href="?idsup=<?=$data['id']?>"
                                                 class="btn btn-dark btn-sm "><i class="bi bi-trash3-fill"></i></a>
                                         </td>

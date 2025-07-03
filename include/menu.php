@@ -36,13 +36,15 @@ if(!isset($_SESSION['fonction']) || empty($_SESSION['fonction'] ))
                 <li ><a href="../views/chargement.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-arrow-up-circle-fill text-white"></i><strong> <span>chargement</span></strong></a></li>
                 <li ><a href="../views/declarant.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>declarant</span></strong></a></li>
                 <li ><a href="../views/declarer.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>declarer un camion</span></strong></a></li>
-                <li ><a href="../views/payerdeclaration.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>Payement declarationn</span></strong></a></li>
+                <li ><a href="../views/payerdeclaration.php?retour=1" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>Payement declarationn</span></strong></a></li>
                 <li ><a href="../views/approvisionnement.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-arrow-down-circle-fill text-white"></i><strong> <span>approvisionnement</span></strong></a></li>
                 <li ><a href="../views/personnel.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>personnel</span></strong></a></li>
                 <li ><a href="../views/client.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>Client</span></strong></a></li>
                 <li ><a href="../views/sortie.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-arrow-left-circle-fill text-white"></i><strong> <span>vente en credit</span></strong></a></li>
                 <li ><a href="../views/remuneration.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-calculator-fill text-white"></i><strong> <span>Remuneration</span></strong></a></li>
                 <li ><a href="../views/bondesortie.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-arrow-left-circle-fill text-white"></i><strong> <span>bon de sortie</span></strong></a></li>
+
+   <li ><a href="../views/fichedeclarant.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-card-list text-white"></i><strong> <span>fiche declarant</span></strong></a></li>              
                
                
           <?php } else if($_SESSION['fonction']=="caissiere"){?>
