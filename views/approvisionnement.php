@@ -116,26 +116,20 @@ include_once('../include/menu.php');
                                   <form  class="shadow  p-3 m-3" action="<?=$action?>" id="uploadForm" method="POST" enctype="multipart/form-data">
                                   <h5 class="card-title text-center "><?=$titre?></h5>
                                     <div class="row">
-                                        
-                                         <div class="col-xl-6 col-lg-6 col-md-6  col-sm-6 p-3">
-                                            <label for=""><span>quantite essence</span><?=$_SESSION['quantite_essence']?></label>
-                                            <input  required type="number"  max="<?=$_SESSION['quantite_essence']?>" step="0.01" class="form-control" placeholder="Ex:999.5"  name="quantite_essence" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['quantite']?>" <?php } ?>> 
+                                        <div class="col-xl-12 col-lg-12 col-md-12  col-sm-12 p-3">
+                                            
+                                             <center><label for=""><span>quantite prevue de la commande : </span><?=$_SESSION['quantite']?>L/<?=$_SESSION['type']?></label></center>
+                                        </div> 
+                                         <div class="col-xl-12 col-lg-12 col-md-12  col-sm-12 p-3">
+                                           
+                                            <label for=""><span>entrez la quantite reussie </span></label>
+                                            <input  required type="number"  max="<?=$_SESSION['quantite']?>" step="0.01" class="form-control" placeholder="Ex:999.5"  name="quantite" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['quantite']?>" <?php } ?>> 
                                         </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6  col-sm-6 p-3">
-                                            <label for="">quantite  mazout <?=$_SESSION['quantite_mazout']?></span></label>
-                                            <input autocomplete="off" required type="number" max="<?=$_SESSION['quantite_mazout']?>" step="0.01" class="form-control" placeholder="Ex:999.5"  name="quantite_mazout" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['quantite']?>" <?php } ?>> 
-                                        </div>
+                                       
                                    
                                         
                                  
-                                        <div class="col-xl-12 col-lg-12 col-md-12 mt-10 col-sm-12 p-3 aling-center">
-                                            <?php if(isset($_SESSION['notif'])){ ?>
-                                                <center><p class="alert-<?=$_SESSION['color']?> alert">
-                                                <b> <i class="bi bi-<?=$_SESSION['icon']?>">  <?php echo $_SESSION['notif']; unset($_SESSION['notif']) ?></i></b>
-                                                        
-                                                </p></center> 
-                                            <?php } ?> 
-                                         </div>
+                                        
                                     <div class="col-xl-12 col-lg-12 col-md-12  col-sm-12 ">
                                    
                                     <?php if(isset($_GET['id'])){?>
@@ -158,6 +152,14 @@ include_once('../include/menu.php');
                                 </div>
                     <?php }else { ?>
                         <a href=" approvisionnement.php?new" class="col-12 btn btn-outline-success">nouvel approvisionnement</a> 
+                        <div class="col-xl-12 col-lg-12 col-md-12 mt-10 col-sm-12 p-3 aling-center">
+                                            <?php if(isset($_SESSION['notif'])){ ?>
+                                                <center><p class="alert-<?=$_SESSION['color']?> alert">
+                                                <b> <i class="bi bi-<?=$_SESSION['icon']?>">  <?php echo $_SESSION['notif']; unset($_SESSION['notif']) ?></i></b>
+                                                        
+                                                </p></center> 
+                                            <?php } ?> 
+                                         </div>
                         <?php } ?>
                 <?php }  ?>
 
@@ -168,10 +170,10 @@ include_once('../include/menu.php');
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">date</th>
-                                            <th scope="col">N°commande</th>
-                                            <th scope="col">fournisseur</th>
-                                            <th scope="col">quantite_essence</th>  
-                                            <th scope="col">quantite_essence</th>  
+                                            <th scope="col">N°com</th>
+                                            <th scope="col">F/sseur</th>
+                                            <th scope="col">Qte/Type</th>  
+                                            <th scope="col">PR</th>  
                                             <th scope="col">reste</th>  
                                             <th scope="col">Action</th>
 
@@ -190,8 +192,8 @@ include_once('../include/menu.php');
                                             <td><?php $dates=strtotime($data["dates"]); echo date('d/m/Y ',$dates);?> </td>
                                             <td><?php echo sprintf('%04d', $data['numcommande']);?></td>
                                             <td><?=$data['prenom']?> </td>
-                                            <td><?=$data['quantite_essence']?> L</td>
-                                            <td><?=$data['quantite_mazout']?> L</td>
+                                            <td><?=$data['quantite']?> L /<?php if($data['type']=='essence'){ echo "E";}else { echo "M";} ?></td>
+                                            <td><?=$data['PR']?> $</td>
                                             <td><?=$data['reste_argent']?> $</td>
                                             <td>
                                                 <a href="approvisionnement.php?id=<?=$data['id']?>" class="btn btn-success btn-sm "><i

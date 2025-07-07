@@ -30,7 +30,7 @@ if(isset($_GET['idexp'])){
  if(isset($_GET['search']))
  {
      $recherche=$_GET['search'];
-     $SelClient=$connexion->prepare("SELECT * From client where  client.supprimer=0 and  client.nom   LIKE ? OR client.postnom  LIKE ? OR client.prenom  LIKE ? OR client.numero LIKE ?");
+     $SelClient=$connexion->prepare("SELECT * From client where  client.supprimer=0 and  (client.nom   LIKE ? OR client.postnom  LIKE ? OR client.prenom  LIKE ? OR client.numero LIKE ?)");
      $SelClient->execute(["%".$recherche."%","%".$recherche."%","%".$recherche."%","%".$recherche."%"]); 
      $message="Aucun element correspond  a votre recherche";
      

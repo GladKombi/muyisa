@@ -7,7 +7,7 @@ if(isset($_GET['id']))
     $bouton="Modifier";
     $titre="Modifier  une approvisionnement";
     
-    $req=$connexion->prepare("SELECT * from approvisionnement where id=?");
+    $req=$connexion->prepare("SELECT * from entree where id=?");
     $req->execute(array($id));
     $modData=$req->fetch();
 
@@ -16,7 +16,7 @@ if(isset($_GET['id']))
 else if(isset($_GET['idsup']))
 {
     $id=$_GET['idsup'];
-    $req=$connexion->prepare("SELECT * from approvisionnement where id=?");
+    $req=$connexion->prepare("SELECT * from entree where id=?");
     $req->execute(array($id));
     $supprimer=$req->fetch();
     $titre="";
@@ -36,28 +36,23 @@ $SelCom=$connexion->prepare("SELECT commande_ap.*,fournisseur.nom,fournisseur.po
 $SelCom->execute();
 if(isset($_GET['com']))
 {
-    $quantite_essence=0;
-    $quantite_mazout=0;
+    $quantite=0;
+  
     $com=$_GET['com'];
     $action="../models/add/add-approvisionnement.php?com=$com";
     $selPanier=$connexion->prepare("SELECT * from panier_ap where commande=?");
     $selPanier->execute(array($com));
     while($panier=$selPanier->fetch())
     {
-        if($panier['type']=="essence")
-        {
-            $quantite_essence=$panier['quantite'];
-            $argent_total_essence=$quantite_essence*$panier['prixunitaire'];
-            $_SESSION['quantite_essence']=$quantite_essence*1000;
-            $_SESSION['argent_essence']=$argent_total_essence/$_SESSION['quantite_essence'];
-        }
-        else
-        {
-            $quantite_mazout=$panier['quantite'];
-            $argent_total_mazout=$quantite_mazout*$panier['prixunitaire'];
-            $_SESSION['quantite_mazout']=$quantite_mazout*1000;
-            $_SESSION['argent_mazout']=$argent_total_mazout/$_SESSION['quantite_mazout'];
-        }
+      
+            $quantite=$panier['quantite'];
+            $argent_total=$quantite*$panier['prixunitaire'];
+            $_SESSION['quantite']=$quantite*1000;
+            $_SESSION['type']=$panier['type'];
+            $_SESSION['argent']=$argent_total/$_SESSION['quantite'];
+            $_SESSION['total_argent']=$argent_total;
+      
+      
         
     }
 }
