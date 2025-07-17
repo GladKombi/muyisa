@@ -155,7 +155,7 @@ include_once('../include/menu.php');
 
                             <div class="shadow p-3">
                                 <table class="table datatable ">
-                                <h4 class="p-3 ">Liste des clients</h4>
+                                  <h4 class="p-3 ">Liste des clients</h4>
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>

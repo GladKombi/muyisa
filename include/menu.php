@@ -37,7 +37,7 @@ if(!isset($_SESSION['fonction']) || empty($_SESSION['fonction'] ))
                 <li ><a href="../views/declarant.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>declarant</span></strong></a></li>
                 <li ><a href="../views/declarer.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>declarer un camion</span></strong></a></li>
                 <li ><a href="../views/payerdeclaration.php?retour=1" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>Payement declarationn</span></strong></a></li>
-                <li ><a href="../views/approvisionnement.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-arrow-down-circle-fill text-white"></i><strong> <span>approvisionnement</span></strong></a></li>
+                <li ><a href="../views/approvisionnement.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-arrow-down-circle-fill text-white"></i><strong> <span>dechargement</span></strong></a></li>
                 <li ><a href="../views/personnel.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>personnel</span></strong></a></li>
                 <li ><a href="../views/client.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>Client</span></strong></a></li>
                 <li ><a href="../views/sortie.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-arrow-left-circle-fill text-white"></i><strong> <span>vente en credit</span></strong></a></li>
@@ -49,7 +49,7 @@ if(!isset($_SESSION['fonction']) || empty($_SESSION['fonction'] ))
                
           <?php } else if($_SESSION['fonction']=="caissiere"){?>
                
-                  
+                   <li ><a href="../views/Vente.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>Vente cash</span></strong></a></li>
          <?php } else if($_SESSION['fonction']=="comptable"){?>
                  <li ><a href="../views/stock.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-box-seam text-white"></i><strong> <span>Verifier stock</span></strong></a></li>
                  <li ><a href="../views/situation_client.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-bar-chart-fill text-white"></i><strong> <span>situation client</span></strong></a></li>

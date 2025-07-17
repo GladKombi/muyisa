@@ -87,64 +87,24 @@ include_once('../include/menu.php');
                                         </p></center> 
                                     <?php } ?> 
                                 </div>
-                                <?php if($compt>0 && !isset($_GET['id'])){?>
-                                    <div class='shadow p-3'>
-                                        <div class="row">
-                                             <div class="col-xl-4 col-lg-4 col-md-4  col-sm-4 p-3">
-                                                <a href='prix.php?id=<?=$last['id']?>' class="btn btn-outline-success col-12">Mettre a  jour le prix </a>
-                                            </div>
-                                            <div class="col-xl-8 col-lg-8 col-md-8  col-sm-8 p-3">
-                                                <center><h2>PRIX DU JOUR</h2></center>
-                                                <!-- <center><h2>1 L essence = <?=$last['prix_essenceL']?> $</h2></center>
-                                                <center><h2>1 L mazout = <?=$last['prix_mazoutL']?> $</h2></center> -->
-                                                <center>
-                                                    <table border='1'>
-                                                        <thead>
-                                                            <th>Essence</th>
-                                                           
-                                                            <th>Mazout</th>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr >
-                                                                <td>1L = <?=$last['prix_essenceL']?>$</td>
-                                                                
-                                                                <td>.   1L= <?=$last['prix_mazoutL']?>$</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>1 fut = <?=$last['prix_essenceF']?>$</td>
-                                                                
-                                                                <td>.    1 fut= <?=$last['prix_mazoutF']?>$</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </center>
-                                            </div>
-                                        
-                                        </div>
-                                          
-                                     </div>
-                                <?php }else {?>
+                                <?php if($nombreE>0 && !isset($_GET['id'])){?>
+                                   <?php if(isset($_GET['update']) && $_GET['update']=='essence')  {?>
                                     <div>
                                     <form  class="shadow  p-3 m-3" action="<?=$action?>" method="POST" enctype="multipart/form-data">
-                                    <h5 class="card-title text-center "><?=$titre?></h5>
+                                     <h3 class="card-title text-center ">mettre a jour le prix d'essence</h3>
                                         <div class="row">
-                                            
-                                            <div class="col-xl-6 col-lg-6 col-md-6  col-sm-6 p-3">
-                                                <label for="">Prix essence en $ par litre </span></label>
-                                                <input autocomplete="off" required type="number" class="form-control" step="0.01" placeholder="ex: 2800"  name="prix_essenceL" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_essenceL']?>" <?php } ?>> 
+                                            <center><em>NB le prix de revient actuel est de <?=$last_essence['PR']?></em> </center>
+                                            <input type="text" name="type"  hidden id="type" value="essence" >
+                                            <input type="text" name="entree"  hidden id="entree" value="<?=$last_essence['id']?>" >
+                                            <div class="col-xl-12  col-lg-12  col-md-12   col-sm-12  p-3">
+                                                <label for="">Prix detail </span></label>
+                                                <input autocomplete="off" required type="number" class="form-control" min="<?=$last_essence['PR']?>" step="0.01" placeholder="ex: 1.7"  name="prix_detail" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_detail']?>" <?php } ?>> 
                                             </div>
-                                            <div class="col-xl-6 col-lg-6 col-md-6  col-sm-6 p-3">
-                                                <label for="">Prix mazout en $ par litre</span></label>
-                                                <input autocomplete="off" required type="number" class="form-control" step="0.01" placeholder="ex: 2800"  name="prix_mazoutL" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_mazoutL']?>" <?php } ?>> 
+                                            <div class="col-xl-12  col-lg-12  col-md-12   col-sm-12  p-3">
+                                                <label for="">Prix gros  </span></label>
+                                                <input autocomplete="off" required type="number" class="form-control"  min="<?=$last_essence['PR']*207?>" step="0.01" placeholder="ex: 230"  name="prix_gros" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_gros']?>" <?php } ?>> 
                                             </div>
-                                            <div class="col-xl-6 col-lg-6 col-md-6  col-sm-6 p-3">
-                                                <label for="">Prix essence en $ par fut </span></label>
-                                                <input autocomplete="off" required type="number" class="form-control" step="0.01" placeholder="ex: 280000"  name="prix_essenceF" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_essenceF']?>" <?php } ?>> 
-                                            </div>
-                                            <div class="col-xl-6 col-lg-6 col-md-6  col-sm-6 p-3">
-                                                <label for="">Prix mazout en $ par fut</span></label>
-                                                <input autocomplete="off" required type="number" class="form-control" step="0.01" placeholder="ex: 2800"  name="prix_mazoutF" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_mazoutF']?>" <?php } ?>> 
-                                            </div>
+                                         
                                             
                                         <div class="col-xl-12 col-lg-12 col-md-12 mt-10 col-sm-12 p-3 aling-center">
 
@@ -171,59 +131,240 @@ include_once('../include/menu.php');
                     
                                     </form>
                                     </div>
-                                <?php } ?>
+                                    <?php }else { ?>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <a href="?update=essence" class="btn btn-dark p-2  mt-1 w-100">Mettre a jour le prix essence</a>
+
+                                            </div>
+                                            <div class="col-6">
+                                                <H3>prix a jour mazout </H3>
+                                                    <h5>detail: <?=$_SESSION['prix_mazoutL']?></h5>
+                                                    <h5>Gros : <?=$_SESSION['prix_mazoutF']?></h5>
+                                                
+                                            </div>
+                                      </div>
+                                        <?php }  ?>
+
+
+                                      
+                           
+
+                               <?php }else if($nombreM>0 && !isset($_GET['id'])){?>
+                                   <?php if(isset($_GET['update']) && $_GET['update']=='mazout')  {?>
+                                    <div>
+                                    <form  class="shadow  p-3 m-3" action="<?=$action?>" method="POST" enctype="multipart/form-data">
+                                     <h3 class="card-title text-center ">mettre a jour le prix de mazout</h3>
+                                        <div class="row">
+                                            <center><em>NB le prix de revient actuel est de <?=$last_mazout['PR']?></em> </center>
+                                            <input type="text" name="type"  hidden id="type" value="mazout" >
+                                            <input type="text" name="entree"  hidden id="entree" value="<?=$last_mazout['id']?>" >
+                                            <div class="col-xl-12  col-lg-12  col-md-12   col-sm-12  p-3">
+                                                <label for="">Prix detail </span></label>
+                                                <input autocomplete="off" required type="number" class="form-control" min="<?=$last_mazout['PR']?>" step="0.01" placeholder="ex: 1.7"  name="prix_detail" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_detail']?>" <?php } ?>> 
+                                            </div>
+                                            <div class="col-xl-12  col-lg-12  col-md-12   col-sm-12  p-3">
+                                                <label for="">Prix gros  </span></label>
+                                                <input autocomplete="off" required type="number" class="form-control"  min="<?=$last_mazout['PR']*207?>" step="0.01" placeholder="ex: 230"  name="prix_gros" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_gros']?>" <?php } ?>> 
+                                            </div>
+                                         
+                                            
+                                        <div class="col-xl-12 col-lg-12 col-md-12 mt-10 col-sm-12 p-3 aling-center">
+
+
+                                           
+                                        </div>
+                                        <div class="col-xl-12 col-lg-12 col-md-12  col-sm-12 ">
+                                    
+                                        <?php if(isset($_GET['id'])){?>
+                                        <div class="row">
+                                            <div class="col-xl-8 col-lg-8 col-md-8  col-sm-8">
+                                                <input type="submit" class="btn btn-success text-white p-2 mt-1 w-100" name="valider" value="<?=$bouton?>">
+                                            </div>
+                                            <div class="col-xl-4 col-lg-4 col-md-4  col-sm-4">
+                                                <a href="prix.php" class="btn btn-dark p-2  mt-1 w-100">Annuler</a>
+                                            </div>
+                                        </div>
+                                        <?php }else {?>
+                                                <input type="submit" class="btn btn-success text-white p-2 w-100" name="valider" value="<?=$bouton?>">
+                                            <?php } ?>
+                                        </div>
+                                            
+                    
+                    
+                                    </form>
+                                    </div>
+                                    <?php }else { ?>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <H3>prix a jour essence </H3>
+                                                <h5>detail: <?=$_SESSION['prix_essenceL']?></h5>
+                                                 <h5>Gros : <?=$_SESSION['prix_essenceF']?></h5>
+                                                
+                                            </div>
+                                            <div class="col-6">
+                                                <a href="?update=mazout" class="btn btn-dark p-2  mt-1 w-100">Mettre a jour le prix de mazout</a>
+
+                                            </div>
+                                            
+                                        </div>
+                                        <?php }  ?>
+
+
+                                      
+                           
+
+                                <?php }else if(isset($_GET['id'])) {?>
+                                    <div>
+                                    <form  class="shadow  p-3 m-3" action="<?=$action?>" method="POST" enctype="multipart/form-data">
+                                     <h5 class="card-title text-center "><?=$titre?></h5>
+                                        <div class="row">
+                                            
+                                            <div class="col-xl-12  col-lg-12  col-md-12   col-sm-12  p-3">
+                                                <label for="">Prix detail </span></label>
+                                                <input autocomplete="off" required type="number" class="form-control" step="0.01" placeholder="ex: 2800"  name="prix_detail" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_detail']?>" <?php } ?>> 
+                                            </div>
+                                            <div class="col-xl-12  col-lg-12  col-md-12   col-sm-12  p-3">
+                                                <label for="">Prix gros  </span></label>
+                                                <input autocomplete="off" required type="number" class="form-control" step="0.01" placeholder="ex: 2800"  name="prix_gros" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_gros']?>" <?php } ?>> 
+                                            </div>
+                                         
+                                            
+                                        <div class="col-xl-12 col-lg-12 col-md-12 mt-10 col-sm-12 p-3 aling-center">
+
+
+                                           
+                                        </div>
+                                        <div class="col-xl-12 col-lg-12 col-md-12  col-sm-12 ">
+                                    
+                                        <?php if(isset($_GET['id'])){?>
+                                        <div class="row">
+                                            <div class="col-xl-8 col-lg-8 col-md-8  col-sm-8">
+                                                <input type="submit" class="btn btn-success text-white p-2 mt-1 w-100" name="valider" value="<?=$bouton?>">
+                                            </div>
+                                            <div class="col-xl-4 col-lg-4 col-md-4  col-sm-4">
+                                                <a href="prix.php" class="btn btn-dark p-2  mt-1 w-100">Annuler</a>
+                                            </div>
+                                        </div>
+                                        <?php }else {?>
+                                                <input type="submit" class="btn btn-success text-white p-2 w-100" name="valider" value="<?=$bouton?>">
+                                            <?php } ?>
+                                        </div>
+                                            
+                    
+                    
+                                    </form>
+                                    </div>
+                                <?php } else{?>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <H3>prix a jour essence </H3>
+                                                <h5>detail: <?=$_SESSION['prix_essenceL']?></h5>
+                                                 <h5>Gros : <?=$_SESSION['prix_essenceF']?></h5>
+                                        </div>
+                                        <div class="col-6">
+                                            <H3>prix a jour mazout </H3>
+                                                <h5>detail: <?=$_SESSION['prix_mazoutL']?></h5>
+                                                 <h5>Gros : <?=$_SESSION['prix_mazoutF']?></h5>
+                                        </div>
+                                        
+                                    </div>
+                                    <?php }?>
 
 
                                 
                   <?php }  ?>
 
-                            <div class="shadow p-3">
-                                <table class="table datatable ">
-                                <h4 class="p-3 ">Historique du prix</h4>
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">N°</th>
-                                            <th scope="col">date</th>
-                                            <th scope="col">prix essence  litre</th>
-                                            
-                                            <th scope="col">prix essence fut </th>
-                                            <th scope="col">prix mazout litre </th>
-                                            <th scope="col">prix mazout fut  </th>
-                                            
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php 
-                                     
-                                        $numero=0;
-                                        while($data=$SelData->fetch())
-                                        { 
-                                            $numero++;
-                                        ?>
-                                       <tr>
-                                            <th scope="row"><?php echo $numero; ?></th>
-                                            <td><?php $dates=strtotime($data["dates"]); echo date('d/m/Y ',$dates);?> </td>
-                                            <td><?=$data['prix_essenceL']?> $</td>
-                                            <td><?=$data['prix_essenceF']?> $</td>
-                                            <td><?=$data['prix_mazoutL']?> $</td>
-                                            <td><?=$data['prix_mazoutF']?> $</td>
+                                <div class="row">
+                                    <div class="shadow p-3 col-6">
+                                        <table class="table datatable  ">
                                            
+                                        <h4 class="p-3 ">Historique du prix essence</h4>
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">N°</th>
+                                                    <th scope="col">date</th>
+                                                    <th scope="col">prix detail</th>
+                                                    <th scope="col">prix gros </th>
+                                                    <th scope="col">PR </th>
+                                                   
+                                                    
 
-                                       </tr>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                            
+                                                $numero=0;
+                                                while($dataE=$SelDataE->fetch())
+                                                { 
+                                                    $numero++;
+                                                ?>
+                                            <tr>
+                                                    <th scope="row"><?php echo $numero; ?></th>
+                                                    <td><?php $dates=strtotime($dataE["dates"]); echo date('d/m/Y ',$dates);?> </td>
+                                                    <td><?=$dataE['prix_detail']?> $</td>
+                                                    <td><?=$dataE['prix_gros']?> $</td>
+                                                    <td><?=$dataE['PR']?> $</td>
+                                                   
+                                                
+
+                                            </tr>
+                                                
+
+
+                                            
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
                                         
+                                    </div>
+                                    <div class="shadow p-3 col-6">
+                                        <table class="table datatable  ">
+                                        <h4 class="p-3 ">Historique prix mazout</h4>
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">N°</th>
+                                                    <th scope="col">date</th>
+                                                    <th scope="col">prix detail</th>
+                                                    <th scope="col">prix gros </th>
+                                                    <th scope="col">PR </th>
+                                                   
+                                                    
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php 
+                                            
+                                                $numero=0;
+                                                while($dataM=$SelDataM->fetch())
+                                                { 
+                                                    $numero++;
+                                                ?>
+                                            <tr>
+                                                    <th scope="row"><?php echo $numero; ?></th>
+                                                    <td><?php $dates=strtotime($dataM["dates"]); echo date('d/m/Y ',$dates);?> </td>
+                                                    <td><?=$dataM['prix_detail']?> $</td>
+                                                    <td><?=$dataM['prix_gros']?> $</td>
+                                                    <td><?=$dataM['PR']?> $</td>
+                                                   
+                                                
+
+                                            </tr>
+                                                
 
 
-                                       
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
+                                            
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                        
+                                    </div>
                                 
-                              </div>
-                          
-                              <!-- End Table with stripped rows -->
-
-                          </div>
+                                    <!-- End Table with stripped rows -->
+                                </div>
+                            </div>
                       </div>
 
                   </div>

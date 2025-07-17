@@ -17,18 +17,19 @@ if(isset($_POST['valider_new']))
        
     }
 
-    $type_vente=htmlspecialchars($_POST['type']);
+   
     $date=date('Y-m-d');
-    $client=$_GET['client'];
+    $client=htmlspecialchars($_POST['client']);
+    $type_vente=1;
     $req=$connexion->prepare("INSERT INTO commande(dates,client,type,numfacture) values (?,?,?,?)");
     $req->execute(array($date,$client,$type_vente,$numfacutre));
     if($req)
     {
-        $sel_com=$connexion->prepare("SELECT commande.*,client.nom,client.postnom,client.prenom from client,commande where commande.client=client.numero and commande.dates=? and  commande.client=? order by commande.id desc LIMIT 1");
+        $sel_com=$connexion->prepare("SELECT * from commande where commande.dates=? and  commande.client=? order by commande.id desc LIMIT 1");
         $sel_com->execute(array($date,$client));
         $com=$sel_com->fetch();
         $idcom=$com['id'];
-        header("location:../../views/sortie.php?new&com=$idcom");
+        header("location:../../views/vente.php?new&com=$idcom");
     }
 }
 
@@ -46,14 +47,14 @@ if (isset($_POST['valider'])){
         $_SESSION['notif']="Erreur !!! Le prix de mazout n'est pas a jour ";
         $_SESSION['color']='danger';
         $_SESSION['icon']="x";
-        header("location:../../views/sortie.php?com=$commande");
+        header("location:../../views/vente.php?com=$commande");
     }
   if($nombreE!=0)
     {
         $_SESSION['notif']="Erreur !!! Le prix d'essence n'est pas a jour ";
         $_SESSION['color']='danger';
         $_SESSION['icon']="x";
-        header("location:../../views/sortie.php?com=$commande");
+        header("location:../../views/vente.php?com=$commande");
     }
 
     if($type=="essence")
@@ -102,7 +103,7 @@ if (isset($_POST['valider'])){
     if($stock<$quantite)
     {
         $_SESSION['notif']="stock insuffisant, le stock disponible pour se type est de $stock L";
-        header("location:../../views/sortie.php?com=$commande");
+        header("location:../../views/vente.php?com=$commande");
     }
     else
     {
@@ -130,7 +131,7 @@ if (isset($_POST['valider'])){
                 $_SESSION['notif']="Une quantite vient d'etre ajouter dans le panier";
                 $_SESSION['color']='success';
                 $_SESSION['icon']="check-circle-fill";
-                header("location:../../views/sortie.php?com=$commande");
+                header("location:../../views/vente.php?com=$commande");
             }
         }
         else
@@ -142,7 +143,7 @@ if (isset($_POST['valider'])){
                 $_SESSION['notif']="Un element vient d'etre ajouter dans le panier";
                 $_SESSION['color']='success';
                 $_SESSION['icon']="check-circle-fill";
-                header("location:../../views/sortie.php?com=$commande");
+                header("location:../../views/vente.php?com=$commande");
             }
         }
     }   

@@ -1,6 +1,6 @@
 <?php 
 include('../connexion/connexion.php');
-include('../models/select/sel-sortie.php');
+include('../models/select/sel-vente.php');
 
 if(isset($_GET['com']))
 {
@@ -61,7 +61,7 @@ if(isset($_GET['com']))
          </div>
     <?php }else{?>
         <div class="col-6 no-print mb-3">
-            <a href="sortie.php?new" class="btn btn-success col-12 me-2">Nouvelle Facture</a>
+            <a href="vente.php?new" class="btn btn-success col-12 me-2">Nouvelle Facture</a>
         </div>
         <!-- <div class="col-6 no-print mb-3">
             <button onclick="window.print()" class="btn btn-success col-12 me-2">Imprimer</button>
@@ -96,7 +96,7 @@ if(isset($_GET['com']))
       <br>
               <center>Facture n° <?php echo sprintf('%04d', $detail['numfacture']);?></center>
       <br>
-              Mr,Mme : <?php echo strtoupper($detail['nom']." ".$detail['postnom']);?>
+              Mr,Mme : <?php echo strtoupper($detail['client']);?>
         <br>
         PAIEMENT : <?php if($detail['type']==1){ echo "CASH";}else { echo "CREDIT";}?> 
             

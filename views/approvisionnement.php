@@ -37,7 +37,7 @@ include_once('../include/menu.php');
     
             <div class="col-120 bg-dark position-fixed m-auto p-3">
             
-                <h2 class=" text-success">approvisionnement</h2>
+                <h2 class=" text-success">dechargement</h2>
               
             </div><!-- End Page Title -->
        

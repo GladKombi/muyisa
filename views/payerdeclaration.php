@@ -136,24 +136,8 @@ include_once('../include/menu.php');
                                                 $nb++;
                                              
                                                 
-                                                
-                                                
-                                           
-                                            ?>
-                                        
-                                            <div class="col-xl-6 col-lg-6 col-md-6  col-sm-6  ">
-                                                <a class=" btn btn-white shadow m-3 w-100" href="payerdeclaration.php?iddecl=<?=$declarant['decl']?>">
-                                                    <div class=row>
-                                                        <?php
-                                                 
-                                                        
-
-
-
-
-
-
-
+                                            
+     
 
                                                         $decl_sel= $declarant['decl'];
                                                         $sel_solde=$connexion->prepare("SELECT SUM(montant) as som from paiment_declaration where declaration=?");
@@ -168,9 +152,17 @@ include_once('../include/menu.php');
                                                             $reste=$declarant['montant'];
                                                         }
                                                         
-                                                        ?>
-                                                        <div class="col-12">
-                                                            <div class="row">
+                                                       
+                                                
+                                           
+                                            ?>
+                                        
+                                            <div <?php if($reste==0){?> hidden <?php } ?> class="col-xl-6 col-lg-6 col-md-6  col-sm-6  ">
+                                                <a class=" btn btn-white shadow m-3 w-100" href="payerdeclaration.php?iddecl=<?=$declarant['decl']?>">
+                                                    <div class=row>
+                                                        
+                                                        <div   class="col-12">
+                                                            <div  class="row">
                                                                <div class="col-12">
                                                                 <b>Date : </b> <?php echo date('d/m/Y',strtotime($declarant['dates']));?>  
                                                                </div>

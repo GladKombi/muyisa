@@ -29,8 +29,13 @@ else{
 
 }
 
-$SelData=$connexion->prepare("SELECT * from prix order by id desc ");
-$SelData->execute();
+$SelDataE=$connexion->prepare("SELECT prix.*,entree.PR from prix,entree where prix.entree=entree.id and entree.type='essence'order by prix.id desc ");
+$SelDataE->execute();
+
+$SelDataM=$connexion->prepare("SELECT prix.*,entree.PR from prix,entree where prix.entree=entree.id and entree.type='mazout'order by prix.id desc ");
+$SelDataM->execute();
+
+
 
 
 $Sellast=$connexion->prepare("SELECT * from prix order by id desc limit 1");
@@ -39,6 +44,23 @@ $compt=0;
 if($last=$Sellast->fetch())
 {
     $compt=1;
+}
+
+
+
+if(isset($_GET['update']) && $_GET['update']=='essence')
+{
+    $select_last_entreeEssence=$connexion->prepare("SELECT * from entree where supprimer=0 and type='essence' order by id  desc limit 1");
+     $select_last_entreeEssence->execute();
+     $last_essence= $select_last_entreeEssence->fetch();
+}
+
+
+if(isset($_GET['update']) && $_GET['update']=='mazout')
+{
+    $select_last_entreemazout=$connexion->prepare("SELECT * from entree where supprimer=0  and type='mazout' order by id  desc limit 1");
+     $select_last_entreemazout->execute();
+     $last_mazout= $select_last_entreemazout->fetch();
 }
 
 

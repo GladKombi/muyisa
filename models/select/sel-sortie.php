@@ -61,18 +61,11 @@ if(isset($_GET['com']))
    
     $Selpanier=$connexion->prepare("SELECT * from panier where commande=?");
     $Selpanier->execute(array($idd));
+
+     $SelpanierE=$connexion->prepare("SELECT * from panier where commande=?");
+     $SelpanierE->execute(array($idd));
 }
 
 
-$Sellast=$connexion->prepare("SELECT * from prix order by id desc limit 1");
-$Sellast->execute();
-if($last=$Sellast->fetch())
-{
-    $_SESSION['prix_essenceL']=$last['prix_essenceL'];
-    $_SESSION['prix_mazoutL']=$last['prix_mazoutL'];
 
-    $_SESSION['prix_essenceF']=$last['prix_essenceF'];
-    $_SESSION['prix_mazoutF']=$last['prix_mazoutF'];
-
-}
 

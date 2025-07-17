@@ -1,6 +1,6 @@
 <?php 
 include('../connexion/connexion.php');
-include_once('../models/select/sel-sortie.php');
+include_once('../models/select/sel-vente.php');
 if(isset($_GET['idclient']))
 {
 
@@ -17,7 +17,7 @@ if(isset($_GET['idclient']))
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>sortie </title>
+  <title>vente </title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -45,7 +45,7 @@ include_once('../include/menu.php');
     
             <div class="col-120 bg-black position-fixed m-auto p-3">
             
-                <h2 class=" text-white">sortie</h2>
+                <h2 class=" text-white">vente</h2>
               
             </div><!-- End Page Title -->
        
@@ -64,17 +64,17 @@ include_once('../include/menu.php');
                             <div class="col-xl-8 col-lg-8 col-md-8 col-sm-6 bg-black card p-3 shadow   m-3">
                                 <div class="card-header text-dark d-flex justify-content-between">
                                     <b class="text-white">Supprimer</b>
-                                    <a href="sortie.php" class="btn btn-outline-danger text-white"><b><i class="bi bi-x"></i></b></a>
+                                    <a href="vente.php" class="btn btn-outline-danger text-white"><b><i class="bi bi-x"></i></b></a>
                                     
                                 </div>
                                 <div class="card-body py-3  text-white">
-                                    Voulez-vous vraiment supprimer l'sortie de "<b> <?=$supprimer['nom']."  ".$supprimer['postnom']." d'une quantite de ".$supprimer['quantite']." L au prix de  ".$supprimer['prix']?> par L </b>"?
+                                    Voulez-vous vraiment supprimer l'vente de "<b> <?=$supprimer['nom']."  ".$supprimer['postnom']." d'une quantite de ".$supprimer['quantite']." L au prix de  ".$supprimer['prix']?> par L </b>"?
                                     <br>
                                     <em class="mt-3 text-danger">NB: cette action est irréversible</em>
                                 </div>
                                 <div class="card-footer">
-                                    <a href='../models/del/del-sortie.php?iddel=<?=$_GET['idsup'] ?>' class="btn btn-outline-danger">Supprimer</a>
-                                    <a href="sortie.php" class="btn btn-success">Annuler</a>
+                                    <a href='../models/del/del-vente.php?iddel=<?=$_GET['idsup'] ?>' class="btn btn-outline-danger">Supprimer</a>
+                                    <a href="vente.php" class="btn btn-success">Annuler</a>
                                 </div>
                             </div>
                         </div>
@@ -82,63 +82,20 @@ include_once('../include/menu.php');
                 }else { ?>
                             <?php if(isset($_GET['new']) && !isset($_GET['com'])){?>
                                 <div class="shadow p-3 row">
-                                    <center><h2>Choisir l'Client</h2></center>
-                                    <div class="row">
-                                        <div class="col-xl-12 col-lg-12 col-md-12  col-sm-12 p-3">
+                                    <div class="col-xl-12 col-lg-12 col-md-12  col-sm-12 p-3">
                                                 <label for=""></span></label>
-                                                <a href="sortie.php?fin"><input type="buttom" class="btn btn-success w-100" name="annuler " value="Annuler l'operation"></a>
+                                                <a href="vente.php?fin"><input type="buttom" class="btn btn-success w-100" name="annuler " value="Annuler l'operation"></a>
                                         </div>
-                                            
-                                        <div class="col-xl-12 col-lg-12  p-3">
-                                                <form class="search-form d-flex row "   method="get">
-                                                            <input class="col-xl-10 col-lg-10 col-md-10  col-sm-10 p-3 m-1" required autocomplete="off" type="text" name="search" placeholder="Rechercher avec les noms de l'Client" title="">
-                                                            <input hidden type="text" name="new">
-                                                            <button class="col-xl-1 col-lg-1 col-md-1  col-sm-1 p-3 m-1 btn btn-dark" type="submit" title="Search"><i class="bi bi-search "></i></button>
-                                                    <?php if(isset($_GET['search'])){ ?>
-                                                    <div class="col-xl-12 col-lg-12 col-md-12  col-sm-12">
-                                                        <a href="sortie.php?new"><input  class="btn btn-success "type="button" value="Voir tout"></a>
-                                                    </div>
-                                                    <?php } ?>
-                                                </form>
-                                        </div>
-                                        <?php
-                                            $nb=0;
-                                            while($Client= $SelClient->fetch()){
-                                                $nb++;
-                                           
-                                            ?>
-                                        
-                                            <div class="col-xl-6 col-lg-6 col-md-6  col-sm-6  ">
-                                                <a class=" btn btn-white shadow m-3 w-100" href="sortie.php?idclient=<?=$Client['numero']?>">
-                                                    <div class=row>
-                                                        
-                                                        <div class="col-12">
-                                                            <div class="row">
-                                                               
-                                                                <div class="col-12">
-                                                                <b>Noms : </b><?=$Client['nom'].' '.$Client['postnom'].' '.$Client['prenom']?>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                <b>Numero Client : </b> <?=$Client['numero']?>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                <b>N° telephone : </b> <?=$Client['telephone']?>
-                                                                </div>
-                                                              
-                                                            
-                                                            </div>
-                                                            
-                                                        </div>
-                                                    </div>
-                                                    </a>
+                                    <center><h2>Saisir le nom du client</h2></center>
+                                    <div class="row">
+                                        <form action="../models/add/add-vente.php" method="post">
+                                            <div class="col-xl-12 col-lg-12 col-md-12  col-sm-12 p-3">
+                                                <label for="">Nom</span></label>
+                                                <input autocomplete="off" required type="text" class="form-control" placeholder="Ex:KAMBALE KILIMA"  name="client"> 
                                             </div>
-                                    
-                                        <?php } ?> 
-                                                <?php if($nb==0){ ?>
-                                                    <center><?=$message?></center>
-                                               <?php } ?> 
-
-                                        </div>
+                                            <input type="submit" class="btn btn-dark text-white p-2 w-100" name="valider_new" value="Suivant">
+                                      </form>
+                                        
                                 
                                 </div>
                             <?php }else if(isset($_GET['com']) || isset($_GET['id'])){ ?>
@@ -195,7 +152,7 @@ include_once('../include/menu.php');
                                                             <input type="submit" class="btn btn-success text-white p-2 mt-1 w-100" name="valider" value="<?=$bouton?>">
                                                         </div>
                                                         <div class="col-xl-4 col-lg-4 col-md-4  col-sm-4">
-                                                            <a href="sortie.php" class="btn btn-dark p-2  mt-1 w-100">Annuler</a>
+                                                            <a href="vente.php" class="btn btn-dark p-2  mt-1 w-100">Annuler</a>
                                                         </div>
                                                     </div>
                                                     <?php }else {?>
@@ -256,7 +213,7 @@ include_once('../include/menu.php');
                                                     <td>
                                                     
                                                         <a onclick=" return confirm('Voulez-vous vraiment supprimer ?')"
-                                                        href="../models/del/del-sortie.php?iddelpanier=<?=$data['id']?>&com=<?=$_GET['com']?>"
+                                                        href="../models/del/del-vente.php?iddelpanier=<?=$data['id']?>&com=<?=$_GET['com']?>"
                                                         class="btn btn-danger btn-sm "><i class="bi bi-trash3-fill"></i></a>
                                                     </td>
                                                 </tr> 
@@ -270,11 +227,11 @@ include_once('../include/menu.php');
                                         </div>
 
                                         </div>
-                                        <div class="col-4"><a  href="../models/del/del-sortie.php?cancel=<?=$_GET['com'];?>" class="col-12 btn btn-danger ">Annuler </a> </div>
+                                        <div class="col-4"><a  href="../models/del/del-vente.php?cancel=<?=$_GET['com'];?>" class="col-12 btn btn-danger ">Annuler </a> </div>
             
-                                        <div  <?php if($totalo==0){ ?> Hidden <?php } ?> class="col-8"><a href="facture.php?com=<?=$_GET['com'];?>"  class="col-12 btn btn-dark ">Valider et imprimer</a> </div>
+                                        <div  <?php if($totalo==0){ ?> Hidden <?php } ?> class="col-8"><a href="facture_cash.php?com=<?=$_GET['com'];?>"  class="col-12 btn btn-dark ">Valider et imprimer</a> </div>
 
-                                        <div class="col-12 p-3"><a  href="sortie.php?new" class="col-12 btn btn-outline-dark bi bi-plus">Nouvelle commande</a> </div>
+                                        <div class="col-12 p-3"><a  href="vente.php?new" class="col-12 btn btn-outline-dark bi bi-plus">Nouvelle commande</a> </div>
 
                                     
                             </div>
@@ -283,7 +240,7 @@ include_once('../include/menu.php');
                             
                                 <div class="row">
                                     <div class="col-xl-12 col-lg-12 col-md-12  col-sm-12">
-                                         <form  class="shadow  p-3 m-3" action="../models/add/add-sortie.php?client=<?=$_GET['idclient']?>" method="POST">
+                                         <form  class="shadow  p-3 m-3" action="../models/add/add-vente.php?client=<?=$_GET['idclient']?>" method="POST">
                                             <h5 class="card-title text-center "></h5>
                                             <div class="row">
                                                 <div class="col-xl-12 col-lg-12 col-md-12  col-sm-12 p-3">
@@ -316,7 +273,7 @@ include_once('../include/menu.php');
                                                             <input type="submit" class="btn btn-success text-white p-2 mt-1 w-100" name="valider_new" value="suivant">
                                                         </div>
                                                         <div class="col-xl-4 col-lg-4 col-md-4  col-sm-4">
-                                                            <a href="sortie.php" class="btn btn-dark p-2  mt-1 w-100">Annuler</a>
+                                                            <a href="vente.php" class="btn btn-dark p-2  mt-1 w-100">Annuler</a>
                                                         </div>
                                                     
                                             </div>
@@ -331,7 +288,7 @@ include_once('../include/menu.php');
                             <?php }else{ ?>
                                 <center><h3> Quantite  stock essence = <?=$_SESSION['stock_essence']?> L</h3></center> 
                                 <center><h3> Quantite  stock mazout = <?=$_SESSION['stock_mazout']?> L</h3></center> 
-                                <a href=" sortie.php?new" class="col-12 btn btn-outline-success">vendre</a> 
+                                <a href=" vente.php?new" class="col-12 btn btn-outline-success">vendre</a> 
                                 <div class="col-xl-12 col-lg-12 col-md-12 mt-10 col-sm-12 p-3 aling-center">
 
 
@@ -346,7 +303,7 @@ include_once('../include/menu.php');
                 <?php }  ?>
                             <div class=" table-responsive shadow p-3">
                                 <table class="table table-borderless datatable   ">
-                                <h4 class="p-3 ">Liste d'sortie</h4>
+                                <h4 class="p-3 ">Liste d'vente</h4>
                                     <thead>
                                         <tr>
                                             <th scope="col">N°</th>  
@@ -379,19 +336,30 @@ include_once('../include/menu.php');
                                                 $total=$total+$tot;
                                                 
                                             }
-                                        
-                                           $totalg=$totalg+$total;
+                                            $totalg=$totalg+$total;
+                                             $numclient=$data['client'];
+                                             $sel_client=$connexion->prepare("SELECT  * from client where numero=?");
+                                             $sel_client->execute([$numclient]);
+                                             if($exist=$sel_client->fetch())
+                                             {
+                                                $client=$exist['nom']." ".$exist['postnom']." ".$exist['prenom'];
+                                             }
+                                             else
+                                             {
+                                                $client=$numclient;
+                                             }
+                                           
                                             $numero++;
                                         ?>
                                        <tr>
                                             <th scope="row"><?php echo $numero; ?></th>
-                                            <td><?=$data['nom']." ".$data['postnom']." ".$data['prenom']?></td>
+                                            <td><?=$client?></td>
                                             <td><?php $dates=strtotime($data["dates"]); echo date('d/m/Y',$dates);?></td>
                                             <td> <?php if($data['type']==1){ echo "cash";}else { echo "credit";}?></td>
                                            
                                             <td><?=$total?>$</td>
                                             <td>
-                                            <a href="facture.php?com=<?=$data['id']?>" class="btn btn-success btn-sm "><i
+                                            <a href="facture_cash.php?com=<?=$data['id']?>" class="btn btn-success btn-sm "><i
                                              class="bi bi-eye-fill"></i></a>
 
                                               <a   href="?idsup=<?=$data['id']?>"

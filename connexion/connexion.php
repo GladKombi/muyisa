@@ -6,6 +6,44 @@ $connexion=new PDO('mysql:dbname=muyisa_energie; host=localhost', 'root', '');
 	echo $e;
 	
 }
+$Sel_not_updatE=$connexion->prepare("SELECT count(id) as nb from entree    where type='essence' and supprimer=0 and (id) not in (SELECT entree from prix where type='essence')");
+$Sel_not_updatE->execute();
+$countE=$Sel_not_updatE->fetch();
+$nombreE=$countE['nb'];
+if($nombreE==0)
+{
+	$sellast_E=$connexion->prepare("SELECT prix.*,entree.PR from prix,entree  where prix.entree=entree.id and prix.type='essence' and  prix.supprimer=0 order by prix.id desc");
+	$sellast_E->execute();
+	$lastE=$sellast_E->fetch();
+	$_SESSION['prix_essenceL']=$lastE['prix_detail'];
+	$_SESSION['prix_essenceF']=$lastE['prix_gros'];
+	$_SESSION['entreeE']=$lastE['id'];
+	$_SESSION['PRE']=$lastE['PR'];
+}
+
+
+
+
+
+
+$Sel_not_updatM=$connexion->prepare("SELECT count(id) as nb from entree    where type='mazout' and supprimer=0 and (id) not in (SELECT entree from prix where type='mazout')");
+$Sel_not_updatM->execute();
+$countM=$Sel_not_updatM->fetch();
+$nombreM=$countM['nb'];
+
+
+if($nombreM==0)
+{
+	$sellast_M=$connexion->prepare("SELECT prix.*,entree.PR from prix,entree  where prix.entree=entree.id and prix.type='mazout' and  prix.supprimer=0 order by prix.id desc");
+	$sellast_M->execute();
+	$lastM=$sellast_M->fetch();
+	$_SESSION['prix_mazoutL']=$lastM['prix_detail'];
+	$_SESSION['prix_mazoutF']=$lastM['prix_gros'];
+	$_SESSION['entreeM']=$lastM['id'];
+	$_SESSION['PRM']=$lastM['PR'];
+}
+
+
 $sel_reste=$connexion->prepare("SELECT sum(reste_argent) as total from entree  where supprimer=0");
 $sel_reste->execute();
 if($total_reste=$sel_reste->fetch())
