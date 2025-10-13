@@ -45,9 +45,11 @@ include_once('../include/menu.php');
                 <div class="row">
                   <div class="col-xl-6 col-lg-6 col-md-6  col-sm-6  shadow p-3 ">
                        <h1 class="text-success">Stock essence : <?=$_SESSION['stock_essence']?>  Litres</h1>
+                        <a href="fiche_stock.php?type=essence" class="btn btn-dark p-2  mt-1 w-100">voir la fiche de stock essence</a>
                   </div>
                   <div class="col-xl-6 col-lg-6 col-md-6  col-sm-6  shadow p-3">
                         <h1 class="text-success">Stock mazout : <?=$_SESSION['stock_mazout']?>  Litres</h1>
+                        <a href="fiche_stock.php?type=mazout" class="btn btn-dark p-2  mt-1 w-100">voir la fiche de stock mazout</a>
                   </div>
                 </div>
                   
@@ -57,6 +59,8 @@ include_once('../include/menu.php');
             </center>
               </div>
           </section>
+           
+
     
 
      

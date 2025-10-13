@@ -374,7 +374,7 @@ include_once('../include/menu.php');
                                
                                         <?php } ?>
                                         <tr>
-                                            <td colspan="3">TOTAL</td>
+                                            <td colspan="4">TOTAL</td>
                                            
                                           
                                             <td><?=$total?> $</td>

@@ -311,6 +311,7 @@ include_once('../include/menu.php');
                                             <th scope="col">Date</th>
                                             <th scope="col">type achat</th>
                                             <th scope="col">montant</th>
+                                             <th scope="col">resultat</th>
                                             <th scope="col">Action</th>
 
                                         </tr>
@@ -328,12 +329,13 @@ include_once('../include/menu.php');
                                             $com=$data['id'];
                                             $Selpanier=$connexion->prepare("SELECT * from panier where commande=?");
                                             $Selpanier->execute(array($com));
-                                            
+                                            $resultat=0;
                                             while($panier=$Selpanier->fetch())
                                             {
                                                 $tot=0;
                                                 $tot=$panier['quantite']*$panier['prixunitaire'];
                                                 $total=$total+$tot;
+                                                $resultat=$panier['resultat'];
                                                 
                                             }
                                             $totalg=$totalg+$total;
@@ -358,6 +360,7 @@ include_once('../include/menu.php');
                                             <td> <?php if($data['type']==1){ echo "cash";}else { echo "credit";}?></td>
                                            
                                             <td><?=$total?>$</td>
+                                              <td><?=$resultat?></td>
                                             <td>
                                             <a href="facture_cash.php?com=<?=$data['id']?>" class="btn btn-success btn-sm "><i
                                              class="bi bi-eye-fill"></i></a>

@@ -12,12 +12,12 @@ $countE=$Sel_not_updatE->fetch();
 $nombreE=$countE['nb'];
 if($nombreE==0)
 {
-	$sellast_E=$connexion->prepare("SELECT prix.*,entree.PR from prix,entree  where prix.entree=entree.id and prix.type='essence' and  prix.supprimer=0 order by prix.id desc");
+	$sellast_E=$connexion->prepare("SELECT prix.*,entree.PR,entree.id as enter from prix,entree  where prix.entree=entree.id and prix.type='essence' and  prix.supprimer=0 order by prix.id desc");
 	$sellast_E->execute();
 	$lastE=$sellast_E->fetch();
 	$_SESSION['prix_essenceL']=$lastE['prix_detail'];
 	$_SESSION['prix_essenceF']=$lastE['prix_gros'];
-	$_SESSION['entreeE']=$lastE['id'];
+	$_SESSION['entreeE']=$lastE['enter'];
 	$_SESSION['PRE']=$lastE['PR'];
 }
 
@@ -34,12 +34,12 @@ $nombreM=$countM['nb'];
 
 if($nombreM==0)
 {
-	$sellast_M=$connexion->prepare("SELECT prix.*,entree.PR from prix,entree  where prix.entree=entree.id and prix.type='mazout' and  prix.supprimer=0 order by prix.id desc");
+	$sellast_M=$connexion->prepare("SELECT prix.*,entree.PR,entree.id as enter from prix,entree  where prix.entree=entree.id and prix.type='mazout' and  prix.supprimer=0 order by prix.id desc");
 	$sellast_M->execute();
 	$lastM=$sellast_M->fetch();
 	$_SESSION['prix_mazoutL']=$lastM['prix_detail'];
 	$_SESSION['prix_mazoutF']=$lastM['prix_gros'];
-	$_SESSION['entreeM']=$lastM['id'];
+	$_SESSION['entreeM']=$lastM['enter'];
 	$_SESSION['PRM']=$lastM['PR'];
 }
 

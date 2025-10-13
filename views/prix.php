@@ -91,18 +91,18 @@ include_once('../include/menu.php');
                                    <?php if(isset($_GET['update']) && $_GET['update']=='essence')  {?>
                                     <div>
                                     <form  class="shadow  p-3 m-3" action="<?=$action?>" method="POST" enctype="multipart/form-data">
-                                     <h3 class="card-title text-center ">mettre a jour le prix d'essence</h3>
+                                     <h3 class="card-title text-center ">mettre a jour le prix d'essence <?=$nombreE?> </h3>
                                         <div class="row">
                                             <center><em>NB le prix de revient actuel est de <?=$last_essence['PR']?></em> </center>
                                             <input type="text" name="type"  hidden id="type" value="essence" >
                                             <input type="text" name="entree"  hidden id="entree" value="<?=$last_essence['id']?>" >
                                             <div class="col-xl-12  col-lg-12  col-md-12   col-sm-12  p-3">
                                                 <label for="">Prix detail </span></label>
-                                                <input autocomplete="off" required type="number" class="form-control" min="<?=$last_essence['PR']?>" step="0.01" placeholder="ex: 1.7"  name="prix_detail" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_detail']?>" <?php } ?>> 
+                                                <input autocomplete="off" required type="text" class="form-control" placeholder="ex: 1.7"  name="prix_detail" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_detail']?>" <?php } ?>> 
                                             </div>
                                             <div class="col-xl-12  col-lg-12  col-md-12   col-sm-12  p-3">
                                                 <label for="">Prix gros  </span></label>
-                                                <input autocomplete="off" required type="number" class="form-control"  min="<?=$last_essence['PR']*207?>" step="0.01" placeholder="ex: 230"  name="prix_gros" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_gros']?>" <?php } ?>> 
+                                                <input autocomplete="off" required type="text" class="form-control"   placeholder="ex: 230"  name="prix_gros" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_gros']?>" <?php } ?>> 
                                             </div>
                                          
                                             
@@ -161,11 +161,11 @@ include_once('../include/menu.php');
                                             <input type="text" name="entree"  hidden id="entree" value="<?=$last_mazout['id']?>" >
                                             <div class="col-xl-12  col-lg-12  col-md-12   col-sm-12  p-3">
                                                 <label for="">Prix detail </span></label>
-                                                <input autocomplete="off" required type="number" class="form-control" min="<?=$last_mazout['PR']?>" step="0.01" placeholder="ex: 1.7"  name="prix_detail" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_detail']?>" <?php } ?>> 
+                                                <input autocomplete="off" required type="text" class="form-control"  placeholder="ex: 1.7"  name="prix_detail" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_detail']?>" <?php } ?>> 
                                             </div>
                                             <div class="col-xl-12  col-lg-12  col-md-12   col-sm-12  p-3">
                                                 <label for="">Prix gros  </span></label>
-                                                <input autocomplete="off" required type="number" class="form-control"  min="<?=$last_mazout['PR']*207?>" step="0.01" placeholder="ex: 230"  name="prix_gros" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_gros']?>" <?php } ?>> 
+                                                <input autocomplete="off" required type="text" class="form-control"  placeholder="ex: 230"  name="prix_gros" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_gros']?>" <?php } ?>> 
                                             </div>
                                          
                                             
@@ -222,11 +222,11 @@ include_once('../include/menu.php');
                                             
                                             <div class="col-xl-12  col-lg-12  col-md-12   col-sm-12  p-3">
                                                 <label for="">Prix detail </span></label>
-                                                <input autocomplete="off" required type="number" class="form-control" step="0.01" placeholder="ex: 2800"  name="prix_detail" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_detail']?>" <?php } ?>> 
+                                                <input autocomplete="off" required type="text" class="form-control" placeholder="ex: 2800"  name="prix_detail" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_detail']?>" <?php } ?>> 
                                             </div>
                                             <div class="col-xl-12  col-lg-12  col-md-12   col-sm-12  p-3">
                                                 <label for="">Prix gros  </span></label>
-                                                <input autocomplete="off" required type="number" class="form-control" step="0.01" placeholder="ex: 2800"  name="prix_gros" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_gros']?>" <?php } ?>> 
+                                                <input autocomplete="off" required type="text" class="form-control" placeholder="ex: 2800"  name="prix_gros" <?php if(isset($_GET['id'])){ ?> value="<?=$modData['prix_gros']?>" <?php } ?>> 
                                             </div>
                                          
                                             
