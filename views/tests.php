@@ -51,7 +51,7 @@ if (isset($_GET['idclient'])) {
     }
     
     .stock-info {
-      background: linear-gradient(135deg, #12a131ff 0%, #004611ff 100%);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
       border-radius: 10px;
       padding: 15px;
@@ -126,6 +126,7 @@ if (isset($_GET['idclient'])) {
       <div class="container-fluid">
         <div class="row align-items-center">
           <div class="col-md-6">
+            <h1 class="h2 mb-0"><i class="bi bi-cart-check me-2"></i>Gestion des Ventes</h1>
             <span class="date-badge mt-2 d-inline-block">
               <i class="bi bi-calendar-event me-1"></i><?=$page_title?>
             </span>
@@ -155,7 +156,7 @@ if (isset($_GET['idclient'])) {
           </div>
         </div>
         <div class="col-md-6">
-          <div class="stock-info text-center" style="background: linear-gradient(135deg, #12a131ff 0%, #235e01ff 100%);">
+          <div class="stock-info text-center" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
             <h4><i class="bi bi-droplet-fill me-2"></i>Stock Mazout</h4>
             <h3><?=$_SESSION['stock_mazout']?> L</h3>
           </div>
@@ -245,7 +246,7 @@ if (isset($_GET['idclient'])) {
                 <div class="row justify-content-center">
                   <div class="col-xl-6 col-lg-8">
                     <div class="card card-custom">
-                      <div class="card-header bg-success text-white">
+                      <div class="card-header bg-primary text-white">
                         <h5 class="mb-0"><i class="bi bi-person-plus me-2"></i>Nouvelle Vente - Information Client</h5>
                       </div>
                       <div class="card-body">
@@ -255,7 +256,7 @@ if (isset($_GET['idclient'])) {
                             <input type="text" class="form-control form-control-lg" placeholder="Ex: KAMBALE KILIMA" name="client" required autocomplete="off">
                           </div>
                           <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-success btn-custom" name="valider_new">
+                            <button type="submit" class="btn btn-primary btn-custom" name="valider_new">
                               <i class="bi bi-arrow-right me-1"></i>Suivant
                             </button>
                             <a href="vente.php?fin" class="btn btn-outline-secondary">Annuler l'opération</a>
@@ -528,7 +529,7 @@ if (isset($_GET['idclient'])) {
                                 <td><strong><?=number_format($total, 2)?></strong></td>
                                 <td><?=htmlspecialchars($resultat)?></td>
                                 <td class="action-buttons no-print">
-                                  <a href="facture_cash.php?com=<?=$data['id']?>" class="btn btn-success btn-sm" title="Voir">
+                                  <a href="facture_cash.php?com=<?=$data['id']?>" class="btn btn-info btn-sm" title="Voir">
                                     <i class="bi bi-eye"></i>
                                   </a>
                                   <a href="?idsup=<?=$data['id']?>" class="btn btn-danger btn-sm" title="Supprimer">
