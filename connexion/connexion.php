@@ -1,11 +1,31 @@
 <?php
+# Paramètres de connexion en local
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "gestion_loyer";
+# Paramètres de connexion en ligne
+// $servername = "185.98.131.148";
+// $username = "muyis2711606";
+// $password = "zvolnb2cdi";
+// $dbname = "muyis2711606";
+// # Demarer la session
+session_start();
+$error_message = "";
 try {
-session_start();	
-$connexion=new PDO('mysql:dbname=muyisa_energie; host=localhost', 'root', '');
-} catch (Exception $e) {
-	echo $e;
-	
+	$connexion = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+	$connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+	// En cas d'erreur de connexion ou de requête, stocker le message
+	$error_message = "Erreur de connexion à la base de données : " . $e->getMessage();
 }
+// try {
+// session_start();	
+// $connexion=new PDO('mysql:dbname=muyis2711606; host=185.98.131.148', 'muyis2711606', 'zvolnb2cdi');
+// } catch (Exception $e) {
+// 	echo $e;
+	
+// }
 $Sel_not_updatE=$connexion->prepare("SELECT count(id) as nb from entree    where type='essence' and supprimer=0 and (id) not in (SELECT entree from prix where type='essence')");
 $Sel_not_updatE->execute();
 $countE=$Sel_not_updatE->fetch();

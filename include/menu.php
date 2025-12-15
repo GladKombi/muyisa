@@ -49,7 +49,7 @@ if(!isset($_SESSION['fonction']) || empty($_SESSION['fonction'] ))
                
           <?php } else if($_SESSION['fonction']=="caissiere"){?>
                
-                   <li ><a href="../views/Vente.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>Vente cash</span></strong></a></li>
+                   <li ><a href="../views/vente.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-people text-white"></i><strong> <span>Vente cash</span></strong></a></li>
          <?php } else if($_SESSION['fonction']=="comptable"){?>
                  <li ><a href="../views/stock.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-box-seam text-white"></i><strong> <span>Verifier stock</span></strong></a></li>
                  <li ><a href="../views/situation_client.php" class="nav-link scrollto active pb-0 mb-0"><i class="bi bi-bar-chart-fill text-white"></i><strong> <span>situation client</span></strong></a></li>
