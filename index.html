@@ -1,212 +1,800 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>muyisaE</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
+  <title>muyisaE | Votre Station-Service Moderne</title>
+  <meta content="Station-service fiable et moderne, ravitaillement rapide, paiements numériques." name="description">
+  <meta content="station service, carburant, essence, diesel, paiement mobile, services route" name="keywords">
+  
   <link href="assets/img/logo.png" rel="icon">
   <link href="assets/img/logo.png" rel="apple-touch-icon">
-
-
-  <link href="assets/ind/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/ind/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-
-  <link href="assets/ind/css/main.css" rel="stylesheet">
-
+  
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-color: #00a859; /* Vert énergétique - couleur principale */
+      --primary-dark: #008a4d; /* Vert foncé */
+      --primary-light: #e6f7ef; /* Vert très clair */
+      --secondary-color: #00520e; /* Bleu complémentaire */
+      --accent-color: #ff9900; /* Orange pour accents */
+      --dark-color: #1a1a1a;
+      --light-color: #f8f9fa;
+      --gray-color: #6c757d;
+      --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark-color);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4, h5 {
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    
+    /* Header avec navbar verte */
+    .navbar {
+      background-color: var(--primary-color) !important;
+      padding: 0.8rem 0;
+      transition: var(--transition);
+      box-shadow: 0 4px 12px rgba(0, 168, 89, 0.2);
+    }
+    
+    .navbar-brand h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: white;
+      margin: 0;
+    }
+    
+    .navbar-brand span {
+      color: var(--accent-color);
+    }
+    
+    .navbar-toggler {
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 0.4rem 0.6rem;
+    }
+    
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    
+    .navbar-nav .nav-link {
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+      padding: 0.5rem 1.2rem;
+      transition: var(--transition);
+      border-radius: 4px;
+      margin: 0 0.2rem;
+    }
+    
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: white;
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+    
+    .dropdown-menu {
+      background-color: white;
+      border: none;
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      padding: 0.5rem 0;
+    }
+    
+    .dropdown-item {
+      color: var(--dark-color);
+      padding: 0.6rem 1.5rem;
+      transition: var(--transition);
+    }
+    
+    .dropdown-item:hover {
+      background-color: var(--primary-light);
+      color: var(--primary-color);
+    }
+    
+    .dropdown-toggle::after {
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 6rem 0;
+      position: relative;
+      overflow: hidden;
+      margin-top: 76px; /* Pour compenser la navbar fixe */
+    }
+    
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(0, 168, 89, 0.05) 0%, rgba(0, 102, 204, 0.05) 100%);
+      clip-path: polygon(100% 0, 0 0, 100% 100%);
+    }
+    
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-title span {
+      color: var(--primary-color);
+      position: relative;
+    }
+    
+    .hero-title span::after {
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background-color: rgba(0, 168, 89, 0.2);
+      z-index: -1;
+    }
+    
+    .hero-text {
+      font-size: 1.2rem;
+      color: var(--gray-color);
+      margin-bottom: 2.5rem;
+      max-width: 90%;
+    }
+    
+    .btn-primary-custom {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      border: none;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 4px 12px rgba(0, 168, 89, 0.3);
+    }
+    
+    .btn-primary-custom:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 168, 89, 0.4);
+      color: white;
+    }
+    
+    .btn-secondary-custom {
+      background-color: transparent;
+      color: var(--primary-color);
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      border: 2px solid var(--primary-color);
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-block;
+      margin-left: 1rem;
+    }
+    
+    .btn-secondary-custom:hover {
+      background-color: var(--primary-color);
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    .hero-image {
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      transform: perspective(1000px) rotateY(-5deg);
+      transition: var(--transition);
+    }
+    
+    .hero-image:hover {
+      transform: perspective(1000px) rotateY(0deg);
+    }
+    
+    /* About Section */
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    .section-subtitle {
+      color: var(--gray-color);
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+    }
+    
+    .about-section {
+      padding: 5rem 0;
+    }
+    
+    .feature-list li {
+      margin-bottom: 1rem;
+      padding-left: 2.5rem;
+      position: relative;
+    }
+    
+    .feature-list li i {
+      position: absolute;
+      left: 0;
+      top: 5px;
+      color: var(--primary-color);
+      font-size: 1.2rem;
+    }
+    
+    .feature-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      height: 100%;
+      transition: var(--transition);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Services Section */
+    .services-section {
+      background-color: #f8f9fa;
+      padding: 5rem 0;
+    }
+    
+    .service-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow);
+      height: 100%;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      border: none;
+    }
+    
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    }
+    
+    .service-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, rgba(0, 168, 89, 0.1) 0%, rgba(0, 102, 204, 0.1) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .service-icon i {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: var(--dark-color);
+      color: white;
+      padding: 4rem 0 2rem;
+    }
+    
+    .footer h3 span {
+      color: var(--primary-color);
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: var(--transition);
+      margin: 0 0.5rem;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+    
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      margin-right: 0.5rem;
+      transition: var(--transition);
+    }
+    
+    .social-icons a:hover {
+      background-color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+    
+    /* Stats Section */
+    .stats-section {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 4rem 0;
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    /* Contact CTA */
+    .contact-cta {
+      background: linear-gradient(135deg, rgba(0, 168, 89, 0.1) 0%, rgba(0, 102, 204, 0.1) 100%);
+      padding: 5rem 0;
+      text-align: center;
+    }
+    
+    .contact-cta h2 {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Badge vert pour les labels */
+    .green-badge {
+      display: inline-block;
+      background-color: rgba(0, 168, 89, 0.1);
+      color: var(--primary-color);
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-section {
+        padding: 4rem 0;
+        margin-top: 68px;
+      }
+      
+      .btn-secondary-custom {
+        margin-left: 0;
+        margin-top: 1rem;
+      }
+      
+      .hero-section::before {
+        width: 70%;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .stat-number {
+        font-size: 2.5rem;
+      }
+      
+      .navbar-nav .nav-link {
+        margin: 0.2rem 0;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .navbar-brand h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
-
-
-
-  <header id="header" class="header d-flex align-items-center">
-
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-       
-        <!-- <img src="assets/img/logo.png" alt=""> -->
+  <!-- Header avec navbar verte -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
         <h1>muyisaE<span>.</span></h1>
       </a>
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a href="#hero">Accueil</a></li>
-          <li><a href="#about">A propos</a></li>
-          <li><a href="#services">Services</a></li>
-       
-          <li class="dropdown"><a href="#"><span>Se connecter</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="loginn.php?fonction=admin">Admin</a></li>
-              <li><a href="loginn.php?fonction=caissiere">caissiere</a></li>
-              <li><a href="loginn.php?fonction=gerant">gerant</a></li>
-              <li><a href="loginn.php?fonction=comptable">Comptable</a></li>
-             
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#hero">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">À propos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#services">Services</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+              Se connecter <i class="bi bi-chevron-down ms-1"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="loginn.php?fonction=admin">Admin</a></li>
+              <li><a class="dropdown-item" href="loginn.php?fonction=caissiere">Caissière</a></li>
+              <li><a class="dropdown-item" href="loginn.php?fonction=gerant">Gérant</a></li>
+              <li><a class="dropdown-item" href="loginn.php?fonction=comptable">Comptable</a></li>
             </ul>
           </li>
-         
         </ul>
-      </nav><!-- .navbar -->
-
-      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-
-    </div>
-  </header><!-- End Header -->
-  <!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero">
-    <div class="container position-relative">
-      <div class="row gy-5" data-aos="fade-in">
-        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
-          <h2>Welcome to <span>muyisaE</span></h2>
-          <p>Sed autem laudantium dolores. Voluptatem itaque ea consequatur eveniet. Eum quas beatae cumque eum quaerat.</p>
-          <div class="d-flex justify-content-center justify-content-lg-start">
-            <a href="#about" class="btn-get-started">Savoir plus</a>
-           
-          </div>
-        </div>
-        <div class="col-lg-6 order-1 order-lg-2">
-          <img src="assets/img/logoo.jpg" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100">
-        </div>
       </div>
     </div>
+  </nav>
 
-
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section pt-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <span class="green-badge">Énergie Verte • Service Fiable</span>
+          <h1 class="hero-title">muyisaE : <span>Votre Partenaire Énergétique</span> sur la Route</h1>
+          <p class="hero-text">Ravitaillement rapide, services complets et paiements numériques. La qualité et la durabilité pour tous vos besoins énergétiques.</p>
+          <div class="d-flex flex-wrap">
+            <a href="#services" class="btn-primary-custom">Nos Services</a>
+            <a href="#contact" class="btn-secondary-custom">Nous Trouver</a>
+          </div>
+          
+          <!-- Stats mini -->
+          <div class="row mt-5">
+            <div class="col-4">
+              <div class="text-center">
+                <h4 class="fw-bold" style="color: var(--primary-color);">24/7</h4>
+                <p class="small">Ouvert 24h/24</p>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="text-center">
+                <h4 class="fw-bold" style="color: var(--primary-color);">100%</h4>
+                <p class="small">Qualité Garantie</p>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="text-center">
+                <h4 class="fw-bold" style="color: var(--primary-color);">0%</h4>
+                <p class="small">Temps d'attente</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <img src="assets/img/logoo.jpg" class="img-fluid hero-image" alt="Station service muyisaE moderne et professionnelle">
+        </div>
+      </div>
     </div>
   </section>
-  <!-- End Hero Section -->
 
-  <main id="main">
-
-    <!-- ======= About Us Section ======= -->
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-header">
-          <h2>A propos de nous</h2>
-          <p>Aperiam dolorum et et wuia molestias qui eveniet numquam nihil porro incidunt dolores placeat sunt id nobis omnis tiledo stran delop</p>
-        </div>
-
-        <div class="row gy-4">
-          <div class="col-lg-6">
-           
-            <img src="assets/img/slide2.png" class="img-fluid rounded-4 mb-4" alt="">
-          
-         
-          </div>
-          <div class="col-lg-6">
-            <div class="content ps-0 ps-lg-5">
-              <p class="fst-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
-              </p>
-              <ul>
-                <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-              </ul>
-              <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
-              </p>
-
-            
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Us Section -->
-
- 
-
-
-
-    <!-- ======= Our Services Section ======= -->
-    <section id="services" class="services sections-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-header">
-          <h2>Nos services</h2>
-          <p>Aperiam dolorum et et wuia molestias qui eveniet numquam nihil porro incidunt dolores placeat sunt id nobis omnis tiledo stran delop</p>
-        </div>
-
-        <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item  position-relative">
-              <div class="icon">
-                <i class="bi bi-activity"></i>
-              </div>
-              <h3>Nesciunt Mete</h3>
-              <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p>
-              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-broadcast"></i>
-              </div>
-              <h3>Eosle Commodi</h3>
-              <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
-              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6">
-            <div class="service-item position-relative">
-              <div class="icon">
-                <i class="bi bi-easel"></i>
-              </div>
-              <h3>Ledo Markt</h3>
-              <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
-              <a href="#" class="readmore stretched-link">Read more <i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div><!-- End Service Item -->
-
-        
-
-        </div>
-
-      </div>
-    </section><!-- End Our Services Section -->
-
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-
+  <!-- Stats Section -->
+  <section class="stats-section">
     <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>muyisaE</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-
-        Designed by <a href="#">Albert</a>
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="stat-item">
+            <div class="stat-number">5000+</div>
+            <div class="stat-label">Clients Satisfaits</div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="stat-item">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Service Continu</div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="stat-item">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Services Disponibles</div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Paiements Sécurisés</div>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-  </footer><!-- End Footer -->
-  <!-- End Footer -->
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-12">
+          <h2 class="section-title">À propos de nous</h2>
+          <p class="section-subtitle">Notre engagement : Simplifier votre trajet avec des services de qualité, rapides et fiables, disponibles 24h/24.</p>
+        </div>
+      </div>
+      
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <img src="assets/img/slide2.png" class="img-fluid rounded-3 shadow" alt="Intérieur de la station service muyisaE">
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="feature-card">
+            <p class="fst-italic mb-4">
+              Chez <span style="color: var(--primary-color); font-weight: 600;">muyisaE</span>, nous nous efforçons d'être plus qu'une simple station-service. Nous sommes un point d'arrêt essentiel pour la sécurité et le confort de vos voyages.
+            </p>
+            
+            <ul class="feature-list list-unstyled">
+              <li><i class="bi bi-check-circle-fill"></i> <strong>Qualité Assurée</strong> : Carburant de haute performance, vérifié et certifié.</li>
+              <li><i class="bi bi-check-circle-fill"></i> <strong>Accessibilité</strong> : Services disponibles pour tous types de véhicules et horaires étendus.</li>
+              <li><i class="bi bi-check-circle-fill"></i> <strong>Innovation</strong> : Solutions de paiement rapides et numériques pour gagner du temps.</li>
+              <li><i class="bi bi-check-circle-fill"></i> <strong>Durabilité</strong> : Engagement envers des pratiques respectueuses de l'environnement.</li>
+            </ul>
+            
+            <p class="mt-4">
+              Notre équipe est formée pour garantir un service courtois et efficace, faisant de votre arrêt chez nous un moment agréable et productif.
+            </p>
+            
+            <div class="mt-4">
+              <a href="#contact" class="btn btn-outline-success btn-lg">Contactez-nous</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short text-white"></i></a>
+  <!-- Services Section -->
+  <section id="services" class="services-section">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-12">
+          <h2 class="section-title">Nos services</h2>
+          <p class="section-subtitle">Découvrez la gamme complète de services offerts pour une expérience de ravitaillement simple et efficace.</p>
+        </div>
+      </div>
+      
+      <div class="row g-4">
+        <!-- Service 1 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="bi bi-fuel-pump"></i>
+            </div>
+            <h3 class="mb-3">Ravitaillement Rapide</h3>
+            <p class="mb-4">Essence, Diesel, et lubrifiants de qualité supérieure. Service disponible 24/7 pour vous permettre de reprendre la route sans délai.</p>
+            <a href="#" class="text-decoration-none fw-bold" style="color: var(--primary-color);">
+              En savoir plus <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Service 2 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="bi bi-credit-card"></i>
+            </div>
+            <h3 class="mb-3">Paiement Numérique</h3>
+            <p class="mb-4">Acceptez tous les modes de paiement modernes, y compris les cartes de fidélité et les solutions mobiles pour une transaction fluide et sécurisée.</p>
+            <a href="#" class="text-decoration-none fw-bold" style="color: var(--primary-color);">
+              En savoir plus <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Service 3 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="bi bi-shop"></i>
+            </div>
+            <h3 class="mb-3">Boutique & Commodités</h3>
+            <p class="mb-4">Une boutique bien achalandée pour vos besoins de dernière minute : boissons, collations, et accessoires automobiles essentiels.</p>
+            <a href="#" class="text-decoration-none fw-bold" style="color: var(--primary-color);">
+              En savoir plus <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div id="preloader"></div>
+  <!-- Contact CTA -->
+  <section id="contact" class="contact-cta">
+    <div class="container">
+      <h2 class="section-title">Prêt pour une expérience de ravitaillement améliorée ?</h2>
+      <p class="section-subtitle">Venez découvrir pourquoi nos clients nous font confiance pour leurs besoins énergétiques.</p>
+      <div class="mt-4">
+        <a href="tel:+243000000000" class="btn-primary-custom me-3">
+          <i class="bi bi-telephone me-2"></i> Nous Appeler
+        </a>
+        <a href="#about" class="btn-secondary-custom">
+          <i class="bi bi-info-circle me-2"></i> En Savoir Plus
+        </a>
+      </div>
+    </div>
+  </section>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/ind/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <h3 class="mb-3">muyisaE<span>.</span></h3>
+          <p class="mb-2">Votre partenaire fiable sur la route depuis 2023</p>
+          <p class="mb-0">
+            <i class="bi bi-telephone me-2"></i> +243 000 000 000<br>
+            <i class="bi bi-envelope me-2"></i> contact@muyisaenergy.com
+          </p>
+        </div>
+        
+        <div class="col-lg-6 text-lg-end">
+          <div class="social-icons mb-4">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-whatsapp"></i></a>
+          </div>
+          
+          <div class="footer-links">
+            <a href="#hero">Accueil</a>
+            <a href="#about">À propos</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+      
+      <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
+      
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <p class="mb-0">&copy; <strong><span>muyisaE</span></strong> 2023. Tous droits réservés</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p class="mb-0">Conçu par 
+            <a href="https://wa.me/+243977139499" class="text-white">Albert</a> - 
+            <a href="https://wa.me/+243997019883" class="text-white">Glad</a> - 
+            <a href="https://wa.me/+243991147624" class="text-white">Julien</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-  <script src="assets/ind/js/main.js"></script>
+  <!-- Back to top button -->
+  <a href="#" class="btn btn-success btn-lg shadow rounded-circle position-fixed" style="bottom: 30px; right: 30px; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; z-index: 100;">
+    <i class="bi bi-arrow-up"></i>
+  </a>
 
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if(targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if(targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // Fermer le menu mobile après clic
+          const navbarCollapse = document.getElementById('navbarNav');
+          if(navbarCollapse.classList.contains('show')) {
+            new bootstrap.Collapse(navbarCollapse).toggle();
+          }
+        }
+      });
+    });
+    
+    // Navbar shadow on scroll
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if(window.scrollY > 10) {
+        navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+      } else {
+        navbar.style.boxShadow = '0 4px 12px rgba(0, 168, 89, 0.2)';
+      }
+    });
+    
+    // Animate stats on scroll
+    function animateStats() {
+      const statsSection = document.querySelector('.stats-section');
+      if(!statsSection) return;
+      
+      const statsPosition = statsSection.getBoundingClientRect().top;
+      const screenPosition = window.innerHeight / 1.3;
+      
+      if(statsPosition < screenPosition) {
+        const statNumbers = document.querySelectorAll('.stat-number');
+        statNumbers.forEach(stat => {
+          const finalNumber = stat.textContent;
+          if(!stat.hasAttribute('data-animated')) {
+            stat.setAttribute('data-animated', 'true');
+            animateNumber(stat, 0, parseInt(finalNumber), 1500);
+          }
+        });
+      }
+    }
+    
+    function animateNumber(element, start, end, duration) {
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        element.textContent = Math.floor(progress * (end - start) + start);
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+    
+    window.addEventListener('scroll', animateStats);
+    
+    // Activer les tooltips Bootstrap
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+  </script>
 </body>
-
 </html>
